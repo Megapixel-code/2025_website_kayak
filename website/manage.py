@@ -4,7 +4,7 @@ import os
 import sys
 
 
-# steps to launch the server
+# steps to launch the server :
 # source .venv/bin/activate
 # python website/manage.py runserver
 
