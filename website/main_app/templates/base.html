@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="{% static 'js/script.js' %}"></script>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header id="header">
+        <div>
+            <h1>Canoë Kayak Sartrouville</h1>
+        </div>
+        <div>
+            <ul>
+                <li><a href="#">LE CLUB</a></li>
+                <li><a href="#">NOS ACTIVITÉS</a></li>
+                <li><a href="#">CALENDRIER</a></li>
+                <li><a href="#">SORTIES</a></li>
+                <li><a href="#">EAUX VIVES POUR TOUS</a></li>
+                <li><a href="#">INFOS PRATIQUES</a></li>
+                <li><a href="#">MÉDIAS</a></li>
+            </ul>
+        </div>
+    </header>
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
