@@ -37,7 +37,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'dbbackup',
+    'django_crontab',
+
     'main_app',
+]
+
+# DBBACKUP : 
+# python manage.py dbbackup             to backup
+# python manage.py dbrestore            to restore
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR / 'backup'}
+
+CRONJOBS = [
+    ('0 0 * * 0', 'main.cron.my_backup')
 ]
 
 MIDDLEWARE = [
