@@ -5,6 +5,6 @@ function scrollFunction(){
         document.getElementById("header").style.background = `rgba(256, 256, 256, 1)`;
     }
     else {
-        document.getElementById("header").style.background = `rgba(256, 256, 256, 0)`;
+        document.getElementById("header").style.background = `rgba(256, 256, 256, 0.1)`;
     }
 }
