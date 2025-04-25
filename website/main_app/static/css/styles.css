@@ -1,6 +1,55 @@
-.header{
-    background-color: white;
-    position: fixed;
-    transition: 0.4s;
+@font-face {
+    font-family: Cafe_Bold;
+    src: url("../fonts/Louis\ George\ Cafe\ Bold.ttf") format("truetype");
 }
 
+@font-face {
+    font-family: Cafe;
+    src: url("../fonts/Louis\ George\ Cafe.ttf") format("truetype");
+}
+
+
+body{
+    background-color: gray;
+}
+
+
+header#header{
+    /* color change on scroll (see js) */
+    background-color: rgba(256, 256, 256, 0); /* change to 0 after */
+    transition: 0.5s;
+    /* fixed position, will stay on top */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* other */
+    font-family: Cafe_Bold;
+}
+div#website_name{
+    /* website name */
+    font-size: 30px;
+    margin-left: 24px;
+    padding-top: 20px;
+}
+header#header div ul{
+    list-style-type: none;
+    padding-left: 0;
+    text-align: center;
+}
+header#header div ul li{
+    background-color: yellow;
+}
+@media screen and (min-width: 900px) {
+    /* if the screen is bigger than 900px (on a computer) */
+    header#header div ul li{
+        display: inline;
+        margin-inline: calc(9%/7);
+    }
+}
+
+
+a{
+    text-decoration: none;
+    color: inherit;
+}

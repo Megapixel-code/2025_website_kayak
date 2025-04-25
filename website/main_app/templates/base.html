@@ -10,18 +10,32 @@
 </head>
 <body>
     <header id="header">
-        <div>
-            <h1>Canoë Kayak Sartrouville</h1>
+        <div id="website_name">
+            <a href="../../../../">Canoë Kayak Sartrouville</a>
         </div>
         <div>
             <ul>
-                <li><a href="#">LE CLUB</a></li>
-                <li><a href="#">NOS ACTIVITÉS</a></li>
-                <li><a href="#">CALENDRIER</a></li>
-                <li><a href="#">SORTIES</a></li>
-                <li><a href="#">EAUX VIVES POUR TOUS</a></li>
-                <li><a href="#">INFOS PRATIQUES</a></li>
-                <li><a href="#">MÉDIAS</a></li>
+                <li><a href="../../../../" {% if request.path == '/' %} id="keep_hover" {% endif %}>
+                    LE CLUB
+                </a></li>
+                <li><a href="../../../../nos-activites/" {% if request.path == '/nos-activites/' %} id="keep_hover" {% endif %}>
+                    NOS ACTIVITÉS
+                </a></li>
+                <li><a href="../../../../calendrier/" {% if request.path == '/calendrier/' %} id="keep_hover" {% endif %}>
+                    CALENDRIER
+                </a></li>
+                <li><a href="../../../../sorties/" {% if request.path == '/sorties/' %} id="keep_hover" {% endif %}>
+                    SORTIES
+                </a></li>
+                <li><a href="../../../../evpt/" {% if request.path == '/evpt/' %} id="keep_hover" {% endif %}>
+                    EAUX VIVES POUR TOUS
+                </a></li>
+                <li><a href="../../../../infos-pratiques/" {% if request.path == '/infos-pratiques/' %} id="keep_hover" {% endif %}>
+                    INFOS PRATIQUES
+                </a></li>
+                <li><a href="../../../../medias/" {% if request.path == '/medias/' %} id="keep_hover" {% endif %}>
+                    MÉDIAS
+                </a></li>
             </ul>
         </div>
     </header>
