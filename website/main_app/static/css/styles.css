@@ -15,6 +15,13 @@ body{
 
 
 
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+
+
 header#header{
     /* color change on scroll (see js) */
     background-color: rgba(256, 256, 256, 0.1);
@@ -35,6 +42,47 @@ div#website_name{
     padding-top: 20px;
 }
 
+div#utilisateurs{
+    position: absolute;
+    display: inline;
+    top: 25px;
+    right: 44px;
+    transition: 500ms;
+}
+div#utilisateurs:hover{
+    transform: translateY(-3px);
+    transition: 500ms;
+}
+div#utilisateurs a{
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 125%;
+    height: calc(1em*1.6);
+}
+div#utilisateurs a:hover{
+    padding-bottom: 3px;
+}
+div#utilisateurs a::after{
+    content: '';
+    position: absolute;
+    background: #026e9f;
+    width: 120%;
+    height: calc(1em*1.6);
+    right: -22.5%;
+    top: 0;
+    z-index: -1;
+    border-radius: 5px;
+    transition: 500ms;
+}
+div#utilisateurs a:hover::after{
+    background: #03a9f4;
+    transition: 500ms;
+}
+
 header#header div ul{
     color: #026e9f;
 }
@@ -45,19 +93,33 @@ header#header div ul li{
 #keep_hover{
     color: #03a9f4;
     text-decoration: underline;
-    text-underline-offset: 6px;
+    text-underline-offset: 4px;
     text-decoration-thickness: 2px;
 }
 
 @media screen and (min-width: 900px) {
     /* if the screen is bigger than 900px (on a computer) */
-    header#header div ul li a:hover{
-        color: #03a9f4;
-        text-decoration: underline;
-        text-underline-offset: 6px;
-        text-decoration-thickness: 2px;
-        transition: 0.4s;
+    /* underline animation on the header links */
+    header#header div ul li a {
+        display: inline-block;
     }
+    header#header div ul li a:hover {
+        color: #03a9f4;
+        transition: 300ms;
+    }
+    header#header div ul li a::after {
+        content: '';
+        width: 0px;
+        height: 1.5px;
+        display: block;
+        background: #03a9f4;
+        transition: 300ms;
+    }
+    header#header div ul li a:hover::after {
+        width: 100%;
+    }
+    /* end of underline animation */
+
     header#header div ul li{
         display: inline;
         margin-inline: calc(9%/7);
