@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect
+from .models import *
 
 # Create your views here.
 
 def home(request):
-    return render(request, "le_club.html", {})
+    page = content.page.objects.get(id=0)
+    return render(request, "le_club.html", {
+        'page':page,
+    })
 
 
