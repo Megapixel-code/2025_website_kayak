@@ -1,5 +1,5 @@
 // id elements
-var id_header;
+var id_site_header;
 var id_header_path_container;
 // tag elements
 var tag_body;
@@ -11,7 +11,7 @@ window.onload = loadFunction;
 
 
 function loadFunction(){
-    id_header = document.getElementById("header");
+    id_site_header = document.getElementById("site_header");
     id_header_path_container = document.getElementById("header_path_container");
     
     tag_body = document.getElementsByTagName("body")[0];
@@ -59,7 +59,7 @@ function resizeFunction(){
         window.onscroll = function() {};
 
         // removes atributes that have been touched by scrollFunction
-        id_header.className = '';
+        id_site_header.className = '';
 
         closeBurgerMenu();
     }
@@ -70,11 +70,11 @@ function scrollFunction(){
     /* this function is only called when we are a computer */
     if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5){
         // if we scroll
-        id_header.className = `header_scrolled_computer`;
+        id_site_header.className = `header_scrolled_computer`;
     }
     else {
         // if we are at the top of the page
-        id_header.className = 'header_not_scrolled_computer';
+        id_site_header.className = 'header_not_scrolled_computer';
     }
 }
 

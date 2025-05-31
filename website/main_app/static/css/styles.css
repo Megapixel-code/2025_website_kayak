@@ -47,7 +47,7 @@ svg path{
     color: #026e9f;
 }
 .header_scrolled_computer div#utilities div#users svg path{
-    color: black;
+    fill: black;
 }
 
 .header_not_scrolled_computer{
@@ -59,11 +59,11 @@ svg path{
     color: white;
 }
 .header_not_scrolled_computer div#utilities div#users svg path{
-    color: white;
+    fill: white;
 }
 
 /* ========================= PAGE MENU HEADER GENERAL ========================= */
-header#header{
+header#site_header{
     font-family: Cafe_Bold;
     width: 100%;
 }
@@ -88,7 +88,7 @@ div#utilities{
     /* if the screen is bigger than 900px (on a computer) */
     /* ========================= PAGE MENU HEADER COMPUTER ========================= */
 
-    header#header{
+    header#site_header{
         /* color change on scroll (see js and header classes) */
         transition: 0.5s;
         /* fixed position, will stay on top */
@@ -220,6 +220,6 @@ div#page_header img{
     z-index: -2;
     filter: brightness(65%);
 
-    /*make the image not selectable :*/ /* TODO NOT WORKING */
+    /*make the image not selectable :*/
     pointer-events: none;
 }
