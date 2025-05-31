@@ -24,6 +24,43 @@ a{
     text-decoration: none;
 }
 
+ul {
+    list-style-type: none;
+}
+
+svg{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+svg path{
+    fill: black;
+}
+/* ========================= CLASSES ========================= */
+.header_scrolled_computer{
+    background-color: rgba(256, 256, 256, 1);
+    box-shadow: 0px 1px 5px gray;
+    color: black;
+}
+.header_scrolled_computer div ul{
+    color: #026e9f;
+}
+.header_scrolled_computer div#utilities div#users svg path{
+    color: black;
+}
+
+.header_not_scrolled_computer{
+    background-color: rgba(256, 256, 256, 0);
+    box-shadow: 0px 1px 5px transparent;
+    color: white;
+}
+.header_not_scrolled_computer div ul{
+    color: white;
+}
+.header_not_scrolled_computer div#utilities div#users svg path{
+    color: white;
+}
 
 /* ========================= PAGE MENU HEADER GENERAL ========================= */
 header#header{
@@ -31,30 +68,20 @@ header#header{
     width: 100%;
 }
 div#website_name{
-    font-family: Cafe;
-    font-size: 30px;
-}
-div#utilisateurs{
-    position: absolute;
+    /* website name */
+    position: relative;
     display: inline-block;
-    background: #026e9f;
-    z-index: 1;
+    font-family: Cafe;
+    font-size: 20px;
+    padding-left: 18px;
+    padding-top: 28px;
+}
+div#utilities{
+    position: absolute;
+    display: flex;
+    column-gap: 10px;
     top: 25px;
     right: 25px;
-    border-radius: 5px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    transition: 500ms;
-}
-div#utilisateurs:hover{
-    transform: translateY(-3px);
-    transition: 500ms;
-    background: #03a9f4;
-}
-div#utilisateurs a{
-    color: white;
-    font-size: 15px;
-    padding: 3px;
 }
 
 @media screen and (min-width: 900px) {
@@ -62,34 +89,21 @@ div#utilisateurs a{
     /* ========================= PAGE MENU HEADER COMPUTER ========================= */
 
     header#header{
-        /* color change on scroll (see js) */
-        background-color: rgba(256, 256, 256, 0);
+        /* color change on scroll (see js and header classes) */
         transition: 0.5s;
         /* fixed position, will stay on top */
         position: fixed;
-        /* other */
-        box-shadow: 0px 1px 5px transparent;
-        color: white;
-    }
-
-    div#website_name{
-        /* website name */
-        position: relative;
-        display: inline-block;
-        padding-left: 24px;
-        padding-top: 20px;
     }
 
     div#header_path_container{
-        margin-top: 15px;
-        margin-bottom: 15px;
+        margin-top: 25px;
+        margin-bottom: 20px;
     }
     div#header_path_container ul{
         display: flex;
         justify-content: space-evenly;
         list-style-type: none;
         text-align: center;
-        color: white;
     }
     #keep_hover{
         color: #03a9f4;
@@ -113,9 +127,82 @@ div#utilisateurs a{
     div#header_path_container ul li a:hover::after {
         width: 100%;
     }
+
+    /* hide burger menu */
+    div#burger_menu{
+        display: none;
+    }
+    li#burger_users{
+        display: none;
+    }
+    div#burger_cross{
+        display: none;
+    }
+    /* ========================= REST OF THE PAGE ========================= */
 }
-@media screen and (max-width: 900px) {
-    
+@media not screen and (min-width: 900px) {
+    /* if the screen is smaller than 900px (on a phone) */
+    /* ========================= PAGE MENU HEADER PHONE ========================= */
+    div#website_name{
+        padding-bottom: 29px;
+    }
+
+    div#header_path_container{
+        position: fixed;
+        width: 450px;
+        height: 100%;
+        right: 0px;
+        top: 0px;
+        background-color: white;
+        font-size: 30px;
+        font-weight: bold;
+        /* makes the screen darker outside of the menu */
+        /* For Internet Explorer */
+        box-shadow: 0 0 0 1000px rgba(0, 0, 0, .3);
+        /* For other browsers */
+        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .3);
+    }
+    div#header_path_container ul{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 90%;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 17px;
+        row-gap: 30px;
+    }
+
+    li#burger_users{
+        font-family: Cafe;
+        font-weight: normal;
+        padding-bottom: 17px;
+    }
+    li#burger_users::after{
+        position: relative;
+        content: "";
+        display: block;
+        height: 1px;
+        background-color: #ddd;
+        top: 23px;
+    }
+    li#burger_users svg{
+        position: relative;
+        top: 6px;
+        margin-right: 11px;
+        border-radius: 50%;
+        border-style: solid;
+        border-width: 2px;
+    }
+    li#burger_users svg path{
+        transform: translateY(10px);
+    }
+
+    div#burger_cross{
+        position: absolute;
+        top: 25px;
+        right: 25px;
+    }
 }
 
 /* ========================= PAGE IMAGE HEADER ========================= */

@@ -9,22 +9,44 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <header id="header">
-        <div>
-            <!--
-            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" aria-hidden="true" style="pointer-events: none; display: inherit; width: 100%; height: 100%;">
-                <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"></path>
-            </svg>
-            -->
-        </div>
+    <header id="header", class="header_not_scrolled_computer">
         <div id="website_name">
             <a href="../../../../">Canoë Kayak Sartrouville</a>
         </div>
-        <div id="utilisateurs">
-            <a href="../../../../utilisateurs/">Mon compte</a>
+        <div id="utilities">
+            <div id="users">
+                <a href="../../../../utilisateurs/{% if user.is_authenticated %}profil{% endif %}">
+                    <svg focusable="false" width="96" height="96" viewBox="0 0 96 96">
+                        <path d="M48,51.5c16.521,0,30.5,13.82,30.5,29.555h0V89A3.5,3.5,0,0,1,75,92.5H21A3.5,3.5,0,0,1,17.5,89h0V81.055C17.5,65.32,31.479,51.5,48,51.5Zm0,5c-13.772,0-25.5,11.595-25.5,24.555h0V87.5h51V81.055c0-12.831-11.494-24.323-25.087-24.552h0Zm0-53A20.5,20.5,0,1,1,27.5,24,20.5,20.5,0,0,1,48,3.5Zm0,5A15.5,15.5,0,1,0,63.5,24,15.5,15.5,0,0,0,48,8.5Z" transform="translate(-0.5 0.5)"></path>
+                    </svg>
+                </a>
+            </div>
+            <div id="burger_menu" onclick="openBurgerMenu()">
+                <svg focusable="false" height="24" width="24" viewBox="0 0 24 24">
+                    <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"></path>
+                </svg>
+            </div>
         </div>
         <div id="header_path_container">
+            <div id="burger_cross" onclick="closeBurgerMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="m20.058 3.057.884.884-8.058 8.058 8.058 8.058-.884.883L12 12.883l-8.058 8.058-.884-.884 8.058-8.058-8.058-8.058.884-.884L12 11.115z"></path>
+                </svg>
+            </div>
             <ul>
+                {% if user.is_authenticated %}
+                <li id="burger_users"><a href="../../../../utilisateurs/profil">
+                    <svg focusable="false" width="96" height="96" viewBox="0 0 96 96">
+                        <path d="M48,51.5c16.521,0,30.5,13.82,30.5,29.555h0V89A3.5,3.5,0,0,1,75,92.5H21A3.5,3.5,0,0,1,17.5,89h0V81.055C17.5,65.32,31.479,51.5,48,51.5Zm0,5c-13.772,0-25.5,11.595-25.5,24.555h0V87.5h51V81.055c0-12.831-11.494-24.323-25.087-24.552h0Zm0-53A20.5,20.5,0,1,1,27.5,24,20.5,20.5,0,0,1,48,3.5Zm0,5A15.5,15.5,0,1,0,63.5,24,15.5,15.5,0,0,0,48,8.5Z" transform="translate(-0.5 0.5)"></path>
+                    </svg>
+                    Mon profil
+                </a></li>
+                {% else %}
+                <!--                         v padding top necessary because there is no svg like above -->
+                <li id="burger_users" style="padding-top: 6px;"><a href="../../../../utilisateurs/">
+                    Connexion / Inscription
+                </a></li>
+                {% endif %}
                 <li><a href="../../../../" {% if request.path == '/' %} id="keep_hover" {% endif %}>
                     LE CLUB
                 </a></li>
