@@ -13,9 +13,13 @@
     padding: 0;
 }
 
+html{
+    width: 100%;
+}
 
 body{
     background-color: white;
+    width: 100%;
 }
 
 
@@ -66,6 +70,7 @@ svg path{
 header#site_header{
     font-family: Cafe_Bold;
     width: 100%;
+    z-index: 1;
 }
 div#website_name{
     /* website name */
@@ -143,6 +148,11 @@ div#utilities{
 @media not screen and (min-width: 900px) {
     /* if the screen is smaller than 900px (on a phone) */
     /* ========================= PAGE MENU HEADER PHONE ========================= */
+    header#site_header{
+        position: absolute;
+        background-color: white;
+    }
+
     div#website_name{
         padding-bottom: 29px;
     }
@@ -207,16 +217,23 @@ div#utilities{
 
 /* ========================= PAGE IMAGE HEADER ========================= */
 
-div#page_header{
-    position: relative;
+div#content{
     z-index: -1;
 }
 
+div#page_header{
+    position: static;
+    width: 100%;
+    height: 900px; /* height is modified in js to fit screen height */
+    overflow: hidden;
+}
+
 div#page_header img{
-    height: 200%;
+    position: absolute;
+    object-fit: cover;
+    height: 95%;
     width: 100%;
 
-    position: absolute;
     z-index: -2;
     filter: brightness(65%);
 

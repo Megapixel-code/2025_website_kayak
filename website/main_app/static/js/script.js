@@ -1,6 +1,7 @@
 // id elements
 var id_site_header;
 var id_header_path_container;
+var id_page_header;
 // tag elements
 var tag_body;
 // program variables
@@ -13,6 +14,7 @@ window.onload = loadFunction;
 function loadFunction(){
     id_site_header = document.getElementById("site_header");
     id_header_path_container = document.getElementById("header_path_container");
+    id_page_header = document.getElementById("page_header");
     
     tag_body = document.getElementsByTagName("body")[0];
 
@@ -25,6 +27,10 @@ function loadFunction(){
 
 
 function resizeFunction(){
+    /* change page image size */
+    id_page_header.style.height = window.innerHeight+`px`;
+    
+    /* responsive code */
     if (document.body.clientWidth >= 900){
         /* we are now a computer */
         if (b_is_computer){
