@@ -1,3 +1,5 @@
+// class elements
+var class_wave;
 // id elements
 var id_site_header;
 var id_header_path_container;
@@ -6,17 +8,50 @@ var id_page_header;
 var tag_body;
 // program variables
 var b_is_computer; // boolean true if we are a computer false otherwise
+var rng; // rng object
 
 window.onresize = function() {resizeFunction()};
 window.onload = loadFunction;
 
 
+/* ================= RANDOMNESS CLASS WITH SEED ================= */
+function RNG(seed){
+    // LCG using GCC constants
+    // https://en.wikipedia.org/wiki/Linear_congruential_generator#Parameters_in_common_use
+    this.modulus = 0x80000000; // 2**31;
+    this.multiplier = 1103515245;
+    this.increment = 12345;
+
+    this.state = seed;
+}
+RNG.prototype.nextInt = function(){
+    // will change the state to the next int and return the int
+    this.state = (this.state * this.multiplier + this.increment) % this.modulus;
+    return this.state;
+}
+RNG.prototype.nextRange = function(start, end){
+    // returns a number inside the range, including start and end
+    var range = end - start;
+    var random_in_range = Math.floor((this.nextInt() / this.modulus) * (range + 1));
+    return start + random_in_range;
+}
+/* ================= END RANDOMNESS CLASS ================= */
+
+
 function loadFunction(){
+    class_wave = document.getElementsByClassName("wave");
+
     id_site_header = document.getElementById("site_header");
     id_header_path_container = document.getElementById("header_path_container");
     id_page_header = document.getElementById("page_header");
     
     tag_body = document.getElementsByTagName("body")[0];
+
+    // init rng with unique seed based on the height and width of the window
+    var rng_height = new RNG(window.innerHeight);
+    var rng_width = new RNG(window.innerWidth);
+    var seed = Math.floor((rng_width.nextInt() / 2) + (rng_height.nextInt() / 2));
+    rng = new RNG(seed);
 
     /* calls the resizeFunction twice with diferent bools to make sure the program is init correctly */
     b_is_computer = true;
@@ -28,7 +63,7 @@ function loadFunction(){
 
 function resizeFunction(){
     /* change page image size */
-    id_page_header.style.height = window.innerHeight+`px`;
+    id_page_header.style.height = ((window.innerHeight * 0.95) - 30)+`px`;
     
     /* responsive code */
     if (document.body.clientWidth >= 900){
@@ -98,8 +133,34 @@ function openBurgerMenu(){
     }
 }
 
+
 function closeBurgerMenu(){
     /* function will be called when we are on a phone and when we close the burger menu (on phone) */
     id_header_path_container.style.display = `none`;
     tag_body.style.overflow = '';
+}
+
+
+function updateWaves(){
+    /* this function will generate unique waves for each device depending on the width and height of the device */
+    /* --size is between 20 and 50 px */
+    /* --p is between 45 and 70 px */
+    /* --R equals sqrt(--size**2 + --p**2) */
+
+    /* for each wave :
+     * change top
+     * change --size and --p and --R
+     * if needed change starting pos ----------------------------------------- TODO
+     */
+    let size, p, r, offset;
+
+    for (let i = 0; i < class_wave.length; i++) {
+        size = rng.nextRange(20, 50);
+        p = rng.nextRange(45, 70);
+        r = Math.sqrt(size ** 2 + p ** 2);
+        offset = rng.nextRange(-8, 8);
+
+        class_wave[i].style.setProperty('--size','')
+        // TODO ----------------------------------------------------------------
+    }
 }

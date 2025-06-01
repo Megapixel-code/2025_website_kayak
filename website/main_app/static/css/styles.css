@@ -66,6 +66,29 @@ svg path{
     fill: white;
 }
 
+.wave{
+    --size: 30px; /* height of the wave */
+    --p: 50px; /* curvature of the wave */
+    --R: 58.3px; /*sqrt(var(--size)*var(--size) + var(--p)*var(--p))*/
+    
+    position: absolute;
+
+    height: 100%; /* 3 * var(--size) */
+    width: 100%;
+
+    z-index: -1;
+    background: rgba(0, 0, 0, .3);
+
+    --mask:
+        radial-gradient(var(--R) at 50% calc(var(--size) + var(--p)),#000 99%,#0000 101%) calc(50% - 2*var(--size)) 0/calc(4*var(--size)) 100%,
+        radial-gradient(var(--R) at 50% calc(-1*var(--p)),#0000 99%,#000 101%) 50% var(--size)/calc(4*var(--size)) 100% repeat-x;
+    
+    -webkit-mask: var(--mask);
+            mask: var(--mask);
+}
+  
+  
+
 /* ========================= PAGE MENU HEADER GENERAL ========================= */
 header#site_header{
     font-family: Cafe_Bold;
@@ -218,7 +241,7 @@ div#utilities{
 /* ========================= PAGE IMAGE HEADER ========================= */
 
 div#content{
-    z-index: -1;
+    z-index: 0;
 }
 
 div#page_header{
@@ -239,4 +262,9 @@ div#page_header img{
 
     /*make the image not selectable :*/
     pointer-events: none;
+}
+
+div#waves {
+    position: relative;
+    height: 90px;
 }
