@@ -1,8 +1,8 @@
-@font-face {
+@font-face{
     font-family: Cafe_Bold;
     src: url("../fonts/Louis\ George\ Cafe\ Bold.ttf") format("truetype");
 }
-@font-face {
+@font-face{
     font-family: Cafe;
     src: url("../fonts/Louis\ George\ Cafe.ttf") format("truetype");
 }
@@ -28,7 +28,7 @@ a{
     text-decoration: none;
 }
 
-ul {
+ul{
     list-style-type: none;
 }
 
@@ -64,6 +64,32 @@ svg path{
 }
 .header_not_scrolled_computer div#utilities div#users svg path{
     fill: white;
+}
+
+.burger_menu_before_first_open{
+    display: none;
+}
+.burger_menu_open{
+    animation: burger_menu_open 0.5s forwards;
+    -webkit-animation: burger_menu_open 0.5s forwards;
+}
+.burger_menu_close{
+    animation: burger_menu_close 0.5s forwards;
+    -webkit-animation: burger_menu_close 0.5s forwards;
+}
+@keyframes burger_menu_open{
+    100%{ transform: translateX(0px); }
+}
+@-webkit-keyframes burger_menu_open{
+    100%{ -webkit-transform: translateX(0px); }
+}
+@keyframes burger_menu_close{
+    0%{ transform: translateX(0px); }
+    100%{ transform: translateX(450px); }
+}
+@-webkit-keyframes burger_menu_close{
+    0%{ -webkit-transform: translateX(0px); }
+    100%{ -webkit-transform: translateX(450px); }
 }
 
 .wave{
@@ -113,7 +139,7 @@ div#utilities{
     right: 25px;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 900px){
     /* if the screen is bigger than 900px (on a computer) */
     /* ========================= PAGE MENU HEADER COMPUTER ========================= */
 
@@ -141,11 +167,11 @@ div#utilities{
         text-decoration-thickness: 2px;
     }
     /* underline animation on the header links */
-    div#header_path_container ul li a:hover {
+    div#header_path_container ul li a:hover{
         color: #03a9f4;
         transition: 300ms;
     }
-    div#header_path_container ul li a::after {
+    div#header_path_container ul li a::after{
         display: block;
         content: '';
         width: 0px;
@@ -153,7 +179,7 @@ div#utilities{
         background: #03a9f4;
         transition: 300ms;
     }
-    div#header_path_container ul li a:hover::after {
+    div#header_path_container ul li a:hover::after{
         width: 100%;
     }
 
@@ -169,7 +195,7 @@ div#utilities{
     }
     /* ========================= REST OF THE PAGE ========================= */
 }
-@media not screen and (min-width: 900px) {
+@media not screen and (min-width: 900px){
     /* if the screen is smaller than 900px (on a phone) */
     /* ========================= PAGE MENU HEADER PHONE ========================= */
     header#site_header{
@@ -181,20 +207,30 @@ div#utilities{
         padding-bottom: 29px;
     }
 
+    div#burger_menu_dark_background{
+        /* display is set to none in the html, display is changed in js */
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, .3);
+        z-index: 4;
+        width: 100%;
+        height: 100%;
+    }
     div#header_path_container{
         position: fixed;
+        z-index: 5;
         width: 450px;
         height: 100%;
-        right: 0px;
-        top: 0px;
+        right: 0;
+        top: 0;
         background-color: white;
         font-size: 30px;
         font-weight: bold;
-        /* makes the screen darker outside of the menu */
-        /* For Internet Explorer */
-        box-shadow: 0 0 0 1000px rgba(0, 0, 0, .3);
-        /* For other browsers */
-        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .3);
+        
+        /* slide animation see js and classes */
+        transform: translateX(450px);
+        -webkit-transform: translateX(450px);
     }
     div#header_path_container ul{
         display: flex;
@@ -265,7 +301,7 @@ div#page_header img{
     pointer-events: none;
 }
 
-div#waves {
+div#waves{
     position: relative;
     height: 90px;
 }

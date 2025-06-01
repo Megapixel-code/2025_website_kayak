@@ -4,6 +4,7 @@ var class_wave;
 var id_site_header;
 var id_header_path_container;
 var id_page_header;
+var id_burger_menu_dark_background
 // tag elements
 var tag_body;
 // program variables
@@ -58,6 +59,8 @@ function loadFunction(){
     id_site_header = document.getElementById("site_header");
     id_header_path_container = document.getElementById("header_path_container");
     id_page_header = document.getElementById("page_header");
+    id_burger_menu_dark_background = document.getElementById("burger_menu_dark_background");
+    
     
     tag_body = document.getElementsByTagName("body")[0];
 
@@ -79,7 +82,7 @@ function loadFunction(){
 
 function resizeFunction(){
     /* change page image size */
-    id_page_header.style.height = ((window.innerHeight * 0.95) - 30)+`px`;
+    id_page_header.style.height = ((window.innerHeight * 0.95) - 30)+"px";
     
     /* responsive code */
     if (document.body.clientWidth >= 900){
@@ -100,10 +103,10 @@ function resizeFunction(){
     else{        
         /* if the screen is big enough, we disable scroll in the burger menu, else we enable */
         if (window.innerHeight >= 540){
-            id_header_path_container.style.overflowY = '';
+            id_header_path_container.style.overflowY = "";
         }
         else {
-            id_header_path_container.style.overflowY = `scroll`;
+            id_header_path_container.style.overflowY = "scroll";
         }
 
         /* we are now a phone */
@@ -116,7 +119,7 @@ function resizeFunction(){
         window.onscroll = function() {};
 
         // removes atributes that have been touched by scrollFunction
-        id_site_header.className = '';
+        id_site_header.className = "";
 
         closeBurgerMenu();
     }
@@ -127,39 +130,45 @@ function scrollFunction(){
     /* this function is only called when we are a computer */
     if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5){
         // if we scroll
-        id_site_header.className = `header_scrolled_computer`;
+        id_site_header.className = "header_scrolled_computer";
     }
     else {
         // if we are at the top of the page
-        id_site_header.className = 'header_not_scrolled_computer';
+        id_site_header.className = "header_not_scrolled_computer";
     }
 }
 
 
 function openBurgerMenu(){
     /* function will be called when we are on a computer and when we open the burger menu (on phone) */
-    id_header_path_container.style.display = '';
+    id_header_path_container.className = "burger_menu_open";
+    id_burger_menu_dark_background.style.display = "";
     
     if (document.body.clientWidth >= 900){
         /* if we are on computer we want to be able to scroll */
-        tag_body.style.overflow = '';
+        tag_body.style.overflow = "";
     }
     else {
-        tag_body.style.overflow = `hidden`;
+        tag_body.style.overflow = "hidden";
     }
 }
 
 
 function closeBurgerMenu(){
     /* function will be called when we are on a phone and when we close the burger menu (on phone) */
-    id_header_path_container.style.display = `none`;
-    tag_body.style.overflow = '';
+    // if the burger didnt open yet it will not close, important for animation
+    if (id_header_path_container.className == "burger_menu_before_first_open"){
+        return;
+    }
+    id_header_path_container.className = "burger_menu_close";
+    id_burger_menu_dark_background.style.display = "none";
+    tag_body.style.overflow = "";
 }
 
 
 function updateWaves(){
     /* this function will generate unique waves for each device depending on the width and height of the device */
-    /* --size is between 20 and 50 px */
+    /* --size is between 20 and 40 px */
     /* --p is between 45 and 70 px */
     /* --R equals sqrt(--size**2 + --p**2) */
 
@@ -175,9 +184,9 @@ function updateWaves(){
         r = Math.sqrt(size ** 2 + p ** 2);
         offset = rng.nextRange(-8, 8);
 
-        class_wave[i].style.setProperty('--size',size+'px');
-        class_wave[i].style.setProperty('--p',p+'px');
-        class_wave[i].style.setProperty('--R',r+'px');
-        class_wave[i].style.top = offset+'px';
+        class_wave[i].style.setProperty("--size",size+"px");
+        class_wave[i].style.setProperty("--p",p+"px");
+        class_wave[i].style.setProperty("--R",r+"px");
+        class_wave[i].style.top = offset+"px";
     }
 }
