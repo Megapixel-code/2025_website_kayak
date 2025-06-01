@@ -75,8 +75,12 @@
     <div id="content">
         <div id="page_header">
             <img src="{{ page.image.url }}">
-            <h1>{{ page.title }}</h1>
-            <h2>{{ page.second_title }}</h2>
+            <div> <!-- needed to set self to position relative so child can have position absolute -->
+                <div>
+                    <h1>{{ page.title }}</h1>
+                    <h2>{{ page.second_title }}</h2>
+                </div>
+            </div>
         </div>
         <div id="waves">
             <div class="wave"></div>

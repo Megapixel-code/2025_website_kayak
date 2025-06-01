@@ -10,8 +10,9 @@ var tag_body;
 // program variables
 var b_is_computer; // boolean true if we are a computer false otherwise
 var rng; // rng object
+let resize_timeout; // for the resizeThrottler function
 
-window.onresize = function() {resizeFunction()};
+window.onresize = function() {resizeThrottler()};
 window.onload = loadFunction;
 
 
@@ -77,6 +78,20 @@ function loadFunction(){
     resizeFunction();
     b_is_computer = false;
     resizeFunction();
+}
+
+
+
+function resizeThrottler() {
+    // ignore resize events as long as an actualResizeHandler execution is in the queue
+    if (!resize_timeout) {
+        // set a timeout to prevent multiple event’s firing
+        resize_timeout = setTimeout(function () {
+            resize_timeout = null;
+            resizeFunction();
+            // The resizeFunction will execute at a rate of 15fps
+        }, 100);
+    }
 }
 
 
