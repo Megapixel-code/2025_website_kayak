@@ -97,7 +97,7 @@ function resizeThrottler() {
 
 function resizeFunction(){
     /* change page image size */
-    id_page_header.style.height = ((window.innerHeight * 0.95) - 30)+"px";
+    id_page_header.style.height = ((window.innerHeight)*0.98)+"px";
     
     /* responsive code */
     if (document.body.clientWidth >= 900){
@@ -157,13 +157,18 @@ function scrollFunction(){
 function openBurgerMenu(){
     /* function will be called when we are on a computer and when we open the burger menu (on phone) */
     id_header_path_container.className = "burger_menu_open";
-    id_burger_menu_dark_background.style.display = "";
     
     if (document.body.clientWidth >= 900){
-        /* if we are on computer we want to be able to scroll */
+        /* if we are on computer */
+        /* we dont want to see the darkened background */
+        id_burger_menu_dark_background.style.display = "none";
+        /* we want to be able to scroll the main page */
         tag_body.style.overflow = "";
     }
     else {
+        /* if we are on phone */
+        id_burger_menu_dark_background.style.display = "";
+        /* we dont want to be able to scroll the main page */
         tag_body.style.overflow = "hidden";
     }
 }

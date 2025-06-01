@@ -15,6 +15,7 @@
 
 html{
     width: 100%;
+    font-family: Cafe;
 }
 
 body{
@@ -140,6 +141,84 @@ div#utilities{
     right: 25px;
 }
 
+
+/* ========================= PAGE IMAGE HEADER ========================= */
+div#page_header{
+    position: static;
+    width: 100%;
+    height: 900px; /* height is modified in js to fit screen height */
+    overflow: hidden;
+}
+
+div#page_header img{
+    position: absolute;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+
+    z-index: -3;
+    filter: brightness(60%);
+
+    /*make the image not selectable :*/
+    pointer-events: none;
+}
+
+div#page_header div{
+    /* first div of the flex has a height of 120px in the html to not clip inside the header */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100%;
+    width: 100%;
+
+    z-index: -2;
+    
+    text-align: center;
+    color: white;
+}
+div#page_header div h1{
+    font-size: 60px;
+    font-weight: bold;
+}
+div#page_header div h2{
+    font-size: 20px;
+    font-weight: 50;
+}
+div#page_header_buttons_wrapper{
+    flex: 1;
+}
+div#page_header_buttons_wrapper div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+div#page_header_buttons_wrapper div button{
+    height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 10px;
+    border-radius: 100px;
+
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    background-color: #03a9f4;
+    border: none;
+    
+    font-size: 14px;
+}
+
+div#waves{
+    position: relative;
+    top: -45px;
+    height: 70px;
+}
+
+div#content{
+    z-index: 0;
+}
+
+
 @media screen and (min-width: 900px){
     /* if the screen is bigger than 900px (on a computer) */
     /* ========================= PAGE MENU HEADER COMPUTER ========================= */
@@ -209,7 +288,7 @@ div#utilities{
     }
 
     div#burger_menu_dark_background{
-        /* display is set to none in the html, display is changed in js */
+        /* display is changed in js */
         position: fixed;
         top: 0;
         right: 0;
@@ -274,57 +353,4 @@ div#utilities{
         top: 25px;
         right: 25px;
     }
-}
-
-/* ========================= PAGE IMAGE HEADER ========================= */
-
-div#content{
-    z-index: 0;
-}
-
-div#page_header{
-    position: static;
-    width: 100%;
-    height: 900px; /* height is modified in js to fit screen height */
-    overflow: hidden;
-}
-
-div#page_header img{
-    position: absolute;
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-
-    z-index: -2;
-    filter: brightness(65%);
-
-    /*make the image not selectable :*/
-    pointer-events: none;
-}
-
-div#page_header div{
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-div#page_header div div{
-    position: absolute;
-    margin: auto;
-
-    width: 80%;
-    left: 0;
-    right: 0;
-    top: 30%;
-
-    text-align: center;
-
-    /*Solves a problem in which the content is being cut when the div is smaller than its' wrapper:*/
-    max-width: 100%;
-    max-height: 100%;
-    overflow: auto;
-}
-
-div#waves{
-    position: relative;
-    height: 70px;
 }
