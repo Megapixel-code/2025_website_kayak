@@ -77,7 +77,8 @@ svg path{
     width: 100%;
 
     z-index: -1;
-    background: rgba(0, 0, 0, .3);
+    background: #ffffff;
+    background: linear-gradient(0deg,rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 90%);
 
     --mask:
         radial-gradient(var(--R) at 50% calc(var(--size) + var(--p)),#000 99%,#0000 101%) calc(50% - 2*var(--size)) 0/calc(4*var(--size)) 100%,
@@ -254,7 +255,7 @@ div#page_header{
 div#page_header img{
     position: absolute;
     object-fit: cover;
-    height: 95%;
+    height: 100%;
     width: 100%;
 
     z-index: -2;

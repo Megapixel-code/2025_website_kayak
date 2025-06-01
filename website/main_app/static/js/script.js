@@ -15,6 +15,10 @@ window.onload = loadFunction;
 
 
 /* ================= RANDOMNESS CLASS WITH SEED ================= */
+/**
+ * Pseudo random number generator object with a seed
+ * @param {int} seed the seed of the random number generator
+ */
 function RNG(seed){
     // LCG using GCC constants
     // https://en.wikipedia.org/wiki/Linear_congruential_generator#Parameters_in_common_use
@@ -24,11 +28,21 @@ function RNG(seed){
 
     this.state = seed;
 }
+/**
+ * Changes the state of the generator while returning a random positive int
+ * @returns a random positive int
+ */
 RNG.prototype.nextInt = function(){
     // will change the state to the next int and return the int
     this.state = (this.state * this.multiplier + this.increment) % this.modulus;
     return this.state;
 }
+/**
+ * Changes the state of the generator while returning a int inside of the range
+ * @param {int} start
+ * @param {int} end
+ * @returns a random int inside of the range, including start and end
+ */
 RNG.prototype.nextRange = function(start, end){
     // returns a number inside the range, including start and end
     var range = end - start;
@@ -52,6 +66,8 @@ function loadFunction(){
     var rng_width = new RNG(window.innerWidth);
     var seed = Math.floor((rng_width.nextInt() / 2) + (rng_height.nextInt() / 2));
     rng = new RNG(seed);
+    // updates the waves
+    updateWaves();
 
     /* calls the resizeFunction twice with diferent bools to make sure the program is init correctly */
     b_is_computer = true;
@@ -150,17 +166,18 @@ function updateWaves(){
     /* for each wave :
      * change top
      * change --size and --p and --R
-     * if needed change starting pos ----------------------------------------- TODO
      */
     let size, p, r, offset;
 
     for (let i = 0; i < class_wave.length; i++) {
-        size = rng.nextRange(20, 50);
+        size = rng.nextRange(20, 40);
         p = rng.nextRange(45, 70);
         r = Math.sqrt(size ** 2 + p ** 2);
         offset = rng.nextRange(-8, 8);
 
-        class_wave[i].style.setProperty('--size','')
-        // TODO ----------------------------------------------------------------
+        class_wave[i].style.setProperty('--size',size+'px');
+        class_wave[i].style.setProperty('--p',p+'px');
+        class_wave[i].style.setProperty('--R',r+'px');
+        class_wave[i].style.top = offset+'px';
     }
 }
