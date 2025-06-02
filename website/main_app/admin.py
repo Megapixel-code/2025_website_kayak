@@ -4,5 +4,6 @@ from main_app.models.content import *
 
 # Register your models here.
 
-admin.site.register(page)
+admin.site.register(Page)
+admin.site.register(Page_Button)
 # admin.site.register(users)

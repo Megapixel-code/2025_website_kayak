@@ -53,8 +53,8 @@
                 <li><a href="../../../../nos-activites/" {% if request.path == '/nos-activites/' %} id="keep_hover" {% endif %}>
                     NOS ACTIVITÉS
                 </a></li>
-                <li><a href="../../../../calendrier/" {% if request.path == '/calendrier/' %} id="keep_hover" {% endif %}>
-                    CALENDRIER
+                <li><a href="../../../../infos-pratiques/" {% if request.path == '/infos-pratiques/' %} id="keep_hover" {% endif %}>
+                    INFOS PRATIQUES
                 </a></li>
                 <li><a href="../../../../sorties/" {% if request.path == '/sorties/' %} id="keep_hover" {% endif %}>
                     SORTIES
@@ -62,8 +62,8 @@
                 <li><a href="../../../../evpt/" {% if request.path == '/evpt/' %} id="keep_hover" {% endif %}>
                     EAUX VIVES POUR TOUS
                 </a></li>
-                <li><a href="../../../../infos-pratiques/" {% if request.path == '/infos-pratiques/' %} id="keep_hover" {% endif %}>
-                    INFOS PRATIQUES
+                <li><a href="../../../../calendrier/" {% if request.path == '/calendrier/' %} id="keep_hover" {% endif %}>
+                    CALENDRIER
                 </a></li>
                 <li><a href="../../../../medias/" {% if request.path == '/medias/' %} id="keep_hover" {% endif %}>
                     MÉDIAS
@@ -78,11 +78,16 @@
             <div>
                 <div></div>
                 <h1>{{ page.title }}</h1>
+                {% if page.second_title %}
                 <h2>{{ page.second_title }}</h2>
+                {% endif %}
                 <div id="page_header_buttons_wrapper">
                     <div>
-                        <a href="../test/">Plus d'informations</a>
-                        <a>Calendrier</a>
+                    {% if page_buttons %}
+                        {% for b in page_buttons %}
+                            <a href="{{ b.href }}">{{ b.name }}</a>
+                        {% endfor %}
+                    {% endif %}
                     </div>
                 </div>
                 <div></div>
