@@ -15,6 +15,7 @@
 
 html{
     width: 100%;
+    height: 100%;
     font-family: Cafe;
 }
 
@@ -122,7 +123,7 @@ svg path{
 header#site_header{
     font-family: Cafe_Bold;
     width: 100%;
-    z-index: 1;
+    z-index: 100;
 }
 div#website_name{
     /* website name */
@@ -144,7 +145,6 @@ div#utilities{
 
 /* ========================= PAGE IMAGE HEADER ========================= */
 div#page_header{
-    position: static;
     width: 100%;
     height: 900px; /* height is modified in js to fit screen height */
     overflow: hidden;
@@ -156,7 +156,7 @@ div#page_header img{
     height: 100%;
     width: 100%;
 
-    z-index: -3;
+    z-index: -4;
     filter: brightness(60%);
 
     /*make the image not selectable :*/
@@ -170,42 +170,63 @@ div#page_header div{
     flex-wrap: nowrap;
     height: 100%;
     width: 100%;
-
-    z-index: -2;
+    justify-content: center;
     
     text-align: center;
+    text-wrap:balance;
     color: white;
 }
 div#page_header div h1{
+    flex: 1;
     font-size: 60px;
     font-weight: bold;
+    align-content: center;
 }
 div#page_header div h2{
+    flex: 1;
     font-size: 20px;
     font-weight: 50;
+    align-content: center;
 }
-div#page_header_buttons_wrapper{
+div#page_header div div{
     flex: 1;
+}
+div#page_header div div:nth-child(1){
+    /* this is changed when screen is big */
+    flex: 3;
 }
 div#page_header_buttons_wrapper div{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
 }
-div#page_header_buttons_wrapper div button{
-    height: 50px;
+div#page_header_buttons_wrapper div a{
+    position: relative;
+    display: inline-block;
+
+    --height: 50px;
+    height: var(--height);
+    line-height: var(--height);
+    z-index: 1;
     padding-left: 20px;
     padding-right: 20px;
     margin: 10px;
     border-radius: 100px;
 
     text-transform: uppercase;
-    font-weight: bold;
-    color: white;
-    background-color: #03a9f4;
+    font-family: Cafe_Bold;
+    font-weight: bold; /* even bolder */
     border: none;
+    color: white;
+    background: #03a9f4;
     
     font-size: 14px;
+}
+div#page_header_buttons_wrapper div a:hover{
+    background: #026e9f;
+    transition: 300ms;
 }
 
 div#waves{
@@ -221,7 +242,7 @@ div#content{
 
 @media screen and (min-width: 900px){
     /* if the screen is bigger than 900px (on a computer) */
-    /* ========================= PAGE MENU HEADER COMPUTER ========================= */
+    /* ========================= SITE MENU HEADER COMPUTER ========================= */
 
     header#site_header{
         /* color change on scroll (see js and header classes) */
@@ -273,11 +294,21 @@ div#content{
     div#burger_cross{
         display: none;
     }
-    /* ========================= REST OF THE PAGE ========================= */
+    /* ========================= PAGE HEADER COMPUTER ========================= */
+    div#page_header div{
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    div#page_header_buttons_wrapper div{
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
 @media not screen and (min-width: 900px){
     /* if the screen is smaller than 900px (on a phone) */
-    /* ========================= PAGE MENU HEADER PHONE ========================= */
+    /* ========================= SITE MENU HEADER PHONE ========================= */
     header#site_header{
         position: absolute;
         background-color: white;
@@ -352,5 +383,38 @@ div#content{
         position: absolute;
         top: 25px;
         right: 25px;
+    }
+
+    /* ========================= PAGE HEADER PHONE ========================= */
+    div#page_header_buttons_wrapper div{
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+
+
+@media not screen and (min-height: 650px){
+    /* if the screen has height smaller than 700px */
+    div#page_header div h1{
+        display: none;
+    }
+    div#page_header div h2{
+        display: none;
+    }
+    div#page_header div div:nth-child(1){
+        flex: 2;
+    }
+}
+@media screen and (min-height: 800px){
+    /* if the screen is higher than 800px */
+    div#page_header div div:nth-child(1){
+        flex: 2;
+    }
+}
+@media screen and (min-height: 1200px){
+    /* if the screen is higher than 1200px */
+    div#page_header div div:nth-child(1){
+        flex: 1;
     }
 }

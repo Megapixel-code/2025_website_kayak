@@ -72,20 +72,20 @@
         </div>
         <div id="burger_menu_dark_background" onclick="closeBurgerMenu()" style="display: none;"></div>
     </header>
-    <div id="content">
+    <div id="page_header_main">
         <div id="page_header">
             <img src="{{ page.image.url }}">
             <div>
-                <div style="height: 120px;"></div>
+                <div></div>
                 <h1>{{ page.title }}</h1>
                 <h2>{{ page.second_title }}</h2>
                 <div id="page_header_buttons_wrapper">
                     <div>
-                        <button>Plus d'informations</button>
-                        <button>Plus d'informations</button>
-                        <button>Calendrier</button>
+                        <a href="../test/">Plus d'informations</a>
+                        <a>Calendrier</a>
                     </div>
                 </div>
+                <div></div>
             </div>
         </div>
         <div id="waves">
@@ -93,6 +93,8 @@
             <div class="wave"></div>
             <div class="wave"></div>
         </div>
+    </div>
+    <div id="content">
         {% block content %}{% endblock %}
     </div>
 </body>
