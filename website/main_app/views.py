@@ -23,6 +23,7 @@ def calendrier(request):
 def medias(request):
     return renderBasePageContent(request, 6)
 
+# ===================== MAIN PAGES BASE RENDERER =====================
 def renderBasePageContent(request, page_id):
     page = content.Page.objects.get(id=page_id)
     page_buttons = content.Page_Button.objects.filter(page_fk=page)

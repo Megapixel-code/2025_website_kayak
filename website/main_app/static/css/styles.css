@@ -7,6 +7,13 @@
     src: url("../fonts/Louis\ George\ Cafe.ttf") format("truetype");
 }
 
+:root{
+    --light_blue: rgb(3, 169, 244);
+    --dark_blue: rgb(2, 110, 159);
+    --paragraph_group_title: rgb(50, 50, 50);
+    --paragraph_title: rgb(100, 100, 100);
+    --paragraph_content: rgb(150, 150, 150);
+}
 
 *{
     margin: 0;
@@ -50,7 +57,7 @@ svg path{
     color: black;
 }
 .header_scrolled_computer div ul{
-    color: #026e9f;
+    color: var(--dark_blue);
 }
 .header_scrolled_computer div#utilities div#users svg path{
     fill: black;
@@ -220,12 +227,12 @@ div#page_header_buttons_wrapper div a{
     font-weight: bold; /* even bolder */
     border: none;
     color: white;
-    background: #03a9f4;
+    background: var(--light_blue);
     
     font-size: 14px;
 }
 div#page_header_buttons_wrapper div a:hover{
-    background: #026e9f;
+    background: var(--dark_blue);
     transition: 300ms;
 }
 
@@ -235,8 +242,51 @@ div#waves{
     height: 70px;
 }
 
-div#content{
+/* ========================= PAGE BASE CONTENT ========================= */
+div#base_content{
+    position: relative;
+    top: -10px;
     z-index: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+div#base_content h1{
+    /* paragraph group title */
+    position: relative;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: var(--paragraph_group_title);
+}
+div#base_content h1::after{
+    position: absolute;
+    content: '';
+    height: 1px;
+    width: 100%;
+    top: 130%;
+    left: 0;
+    background-color: var(--paragraph_group_title);
+}
+div#paragraph_wrapper{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+div#paragraph_wrapper div{
+    /* paragraph */
+    margin: 10px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+div#paragraph_wrapper div h2{
+    /* paragraph title */
+    color: var(--paragraph_title);
 }
 
 
@@ -262,14 +312,14 @@ div#content{
         text-align: center;
     }
     #keep_hover{
-        color: #03a9f4;
+        color: var(--light_blue);
         text-decoration: underline;
         text-underline-offset: 4px;
         text-decoration-thickness: 2px;
     }
     /* underline animation on the header links */
     div#header_path_container ul li a:hover{
-        color: #03a9f4;
+        color: var(--light_blue);
         transition: 300ms;
     }
     div#header_path_container ul li a::after{
@@ -277,7 +327,7 @@ div#content{
         content: '';
         width: 0px;
         height: 1.5px;
-        background: #03a9f4;
+        background: var(--light_blue);
         transition: 300ms;
     }
     div#header_path_container ul li a:hover::after{
@@ -304,6 +354,10 @@ div#content{
         width: 100%;
         margin-left: 0;
         margin-right: 0;
+    }
+    /* ========================= PAGE BASE CONTENT COMPUTER ========================= */
+    div#base_content{
+        width: 900px;
     }
 }
 @media not screen and (min-width: 900px){
@@ -390,6 +444,11 @@ div#content{
         width: 80%;
         margin-left: 10%;
         margin-right: 10%;
+    }
+
+    /* ========================= PAGE BASE CONTENT PHONE ========================= */
+    div#base_content{
+        width: 100%;
     }
 }
 

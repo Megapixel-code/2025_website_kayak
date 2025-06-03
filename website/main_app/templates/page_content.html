@@ -4,34 +4,75 @@
 Canoë Kayak Sartrouville
 {% endblock %}
 
-{% block content %}
+{% block base_content %}
+<!-- div#base_content is the father -->
 
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
-<h1>HELLO</h1>
+<!-- Paragraph group -->
+<div>
+    <h1>Paragraph group title</h1>
+    <!-- Paragraph -->
+    <div id="paragraph_wrapper">
+        <div>
+            <h2>Paragraph title</h2><!-- can be empty -->
+            <div>
+                <p>
+                    Paragraph content, can include links like so <a href="test">test</a>
+                </p>
+            </div>
+            <table><!-- can be empty -->
+                <tr>
+                    <th>titre1</th>
+                    <th>titre2</th>
+                </tr>
+                <tr>
+                    <td>contenu1</td>
+                    <td>contenu2</td>
+                </tr>
+                <tr>
+                    <td>contenu3</td>
+                    <td>contenu4</td>
+                </tr>
+            </table>
+        </div>
+
+        <div>
+            <div>
+                <p>
+                    Paragraph content, can include links like so <a href="test">test</a>
+                </p>
+            </div>
+            <table><!-- can be empty -->
+                <tr>
+                    <th>titre1</th>
+                    <th>titre2</th>
+                </tr>
+                <tr>
+                    <td>contenu1</td>
+                    <td>contenu2</td>
+                </tr>
+                <tr>
+                    <td>contenu3</td>
+                    <td>contenu4</td>
+                </tr>
+            </table>
+        </div>
+
+        <div>
+            <h2>Paragraph title</h2><!-- can be empty -->
+            <div>
+                <p>
+                    Paragraph content, can include links like so <a href="test">test</a>
+                </p>
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <p>
+                    Paragraph content, can include links like so <a href="test">test</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
