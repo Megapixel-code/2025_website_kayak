@@ -8,11 +8,11 @@
 }
 
 :root{
-    --light_blue: rgb(3, 169, 244);
-    --dark_blue: rgb(2, 110, 159);
+    --main_color: rgb(3, 169, 244);
+    --main_color_dark: rgb(2, 110, 159);
     --paragraph_group_title: rgb(50, 50, 50);
     --paragraph_title: rgb(100, 100, 100);
-    --paragraph_content: rgb(150, 150, 150);
+    --paragraph_content: rgb(120, 120, 120);
     --table_title: var(--paragraph_content);
     --table_background: rgb(240, 240, 240);
 }
@@ -59,7 +59,7 @@ svg path{
     color: black;
 }
 .header_scrolled_computer div ul{
-    color: var(--dark_blue);
+    color: var(--main_color_dark);
 }
 .header_scrolled_computer div#utilities div#users svg path{
     fill: black;
@@ -229,12 +229,12 @@ div#page_header_buttons_wrapper div a{
     font-weight: bold; /* even bolder */
     border: none;
     color: white;
-    background: var(--light_blue);
+    background: var(--main_color);
     
     font-size: 14px;
 }
 div#page_header_buttons_wrapper div a:hover{
-    background: var(--dark_blue);
+    background: var(--main_color_dark);
     transition: 300ms;
 }
 
@@ -251,29 +251,35 @@ div#base_content{
     flex-direction: column;
     
     max-width: 1300px;
-    top: -10px;
+    top: -20px;
     z-index: 0;
 
     margin-left: auto;
     margin-right: auto;
 }
-div#base_content div{
+div#base_content > div{
     flex: 1;
+    margin-bottom: 40px;
 }
 div#base_content div h1{
     /* paragraph group title */
     position: relative;
-    padding-left: 20px;
-    margin-bottom: 25px;
+    padding-left: 30px;
+    margin-bottom: 40px;
+    margin-top: 28px;
+
     font-weight: bold;
+    font-size: 25px;
     color: var(--paragraph_group_title);
 }
 div#base_content div h1::after{
     position: absolute;
     content: '';
     height: 1px;
+    width: 95%;
     top: 100%;
-    translate: 0px 16px;
+    left: 2.5%;
+    translate: 0px 26px;
     background-color: var(--paragraph_group_title);
 }
 div#paragraphs_wrapper{
@@ -281,30 +287,46 @@ div#paragraphs_wrapper{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    
+
     margin-left: 15px;
     margin-right: 15px;
+    margin-bottom: 15px;
 }
-div#paragraphs_wrapper div{
+div#paragraphs_wrapper > div{
     /* paragraph */
     position: relative;
-    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 290px;
+    max-width: 580px;
     margin: 10px;
-    margin-right: 15px;
-    margin-left: 15px;
+    
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+
 }
-div#paragraphs_wrapper div h2{
+div#paragraphs_wrapper div div{
+    flex: 1;
+    margin-bottom: auto;
+}
+div#paragraphs_wrapper a{
+    color: var(--main_color);
+    font-weight: bold;
+}
+div#paragraphs_wrapper div div h2{
     /* paragraph title */
     margin-bottom: 5px;
     color: var(--paragraph_title);
 }
-div#paragraphs_wrapper div p{
+div#paragraphs_wrapper div div p{
     /* paragraph content */
     color: var(--paragraph_content);
 }
 div#paragraphs_wrapper div table{
-    margin-top: 10px;
     width: 100%;
+    margin-top: 10px;
     text-align: center;
     border-collapse: collapse;
     color: var(--table_title);
@@ -343,14 +365,14 @@ div#paragraphs_wrapper div table tr:nth-child(2n){
         text-align: center;
     }
     #keep_hover{
-        color: var(--light_blue);
+        color: var(--main_color);
         text-decoration: underline;
         text-underline-offset: 4px;
         text-decoration-thickness: 2px;
     }
     /* underline animation on the header links */
     div#header_path_container ul li a:hover{
-        color: var(--light_blue);
+        color: var(--main_color);
         transition: 300ms;
     }
     div#header_path_container ul li a::after{
@@ -358,7 +380,7 @@ div#paragraphs_wrapper div table tr:nth-child(2n){
         content: '';
         width: 0px;
         height: 1.5px;
-        background: var(--light_blue);
+        background: var(--main_color);
         transition: 300ms;
     }
     div#header_path_container ul li a:hover::after{
@@ -390,9 +412,10 @@ div#paragraphs_wrapper div table tr:nth-child(2n){
     div#base_content{
         width: 95%;
     }
-    div#base_content div h1::after{
-        width: 100%;
-        left: 0;
+    div#base_content > div{
+        border-radius: 20px;
+
+        box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
     }
 }
 @media not screen and (min-width: 900px){
@@ -485,9 +508,8 @@ div#paragraphs_wrapper div table tr:nth-child(2n){
     div#base_content{
         width: 100%;
     }
-    div#base_content div h1::after{
-        width: 95%;
-        left: 2.5%;
+    div#base_content > div{
+        box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.125);
     }
 }
 
