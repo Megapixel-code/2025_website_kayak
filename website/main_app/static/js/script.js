@@ -1,5 +1,5 @@
 // class elements
-var class_wave;
+var class_wave_page_header;
 // id elements
 var id_site_header;
 var id_header_path_container;
@@ -55,7 +55,7 @@ RNG.prototype.nextRange = function(start, end){
 
 
 function loadFunction(){
-    class_wave = document.getElementsByClassName("wave");
+    class_wave_page_header = document.getElementsByClassName("wave");
 
     id_site_header = document.getElementById("site_header");
     id_header_path_container = document.getElementById("header_path_container");
@@ -114,6 +114,8 @@ function resizeFunction(){
         
         // show the page links in the header
         openBurgerMenu();
+
+        document.querySelector("div#call_to_action > div > img").className = "";
     }
     else{        
         /* if the screen is big enough, we disable scroll in the burger menu, else we enable */
@@ -137,6 +139,8 @@ function resizeFunction(){
         id_site_header.className = "";
 
         closeBurgerMenu();
+
+        document.querySelector("div#call_to_action > div > img").className = "wave";
     }
 }
 
@@ -198,15 +202,30 @@ function updateWaves(){
      */
     let size, p, r, offset;
 
-    for (let i = 0; i < class_wave.length; i++) {
+    for (let i = 0; i < class_wave_page_header.length; i++) {
         size = rng.nextRange(20, 40);
         p = rng.nextRange(45, 70);
         r = Math.sqrt(size ** 2 + p ** 2);
         offset = rng.nextRange(-8, 8);
 
-        class_wave[i].style.setProperty("--size",size+"px");
-        class_wave[i].style.setProperty("--p",p+"px");
-        class_wave[i].style.setProperty("--R",r+"px");
-        class_wave[i].style.top = offset+"px";
+        class_wave_page_header[i].style.setProperty("--size",size+"px");
+        class_wave_page_header[i].style.setProperty("--p",p+"px");
+        class_wave_page_header[i].style.setProperty("--R",r+"px");
+        class_wave_page_header[i].style.top = offset+"px";
+    }
+
+
+    // add the wave between paragraph_wrapper
+    let paragraph_waves = [...document.querySelectorAll("div#base_content > div > footer")];
+
+    for (let i = 0; i < (paragraph_waves.length - 1); i++){
+        paragraph_waves[i].classList.add("wave");
+
+        if (i%2 == 0){
+            paragraph_waves[i].style.setProperty("--wave_color", "var(--darker_white_rgb)");
+        }
+        else{
+            paragraph_waves[i].style.setProperty("--wave_color", "var(--white_rgb)");
+        }
     }
 }

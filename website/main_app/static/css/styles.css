@@ -8,13 +8,19 @@
 }
 
 :root{
+    --white_rgb: 255, 255, 255;
+    --darker_white_rgb: 247, 247, 247;
+    
     --main_color: rgb(3, 169, 244);
     --main_color_dark: rgb(2, 110, 159);
     --paragraph_group_title: rgb(50, 50, 50);
     --paragraph_title: rgb(100, 100, 100);
     --paragraph_content: rgb(120, 120, 120);
-    --table_title: var(--paragraph_content);
     --table_background: rgb(240, 240, 240);
+
+    --table_title: var(--paragraph_content);
+
+    --main_content_offset: 55px
 }
 
 *{
@@ -31,6 +37,7 @@ html{
 body{
     background-color: white;
     width: 100%;
+    height: calc(100% - var(--main_content_offset));
 }
 
 
@@ -53,6 +60,32 @@ svg path{
     fill: black;
 }
 /* ========================= CLASSES ========================= */
+.button_big{
+    display: inline-block;
+
+    --height: 50px;/* height of the button */
+    height: var(--height);
+    line-height: var(--height);
+    z-index: 1;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 10px;
+    border-radius: 100px;
+
+    text-transform: uppercase;
+    font-family: Cafe_Bold;
+    font-weight: bold; /* even bolder */
+    border: none;
+    color: white;
+    background: var(--main_color);
+    
+    font-size: 14px;
+}
+.button_big:hover{
+    background: var(--main_color_dark);
+    transition: 300ms;
+}
+
 .header_scrolled_computer{
     background-color: rgba(256, 256, 256, 1);
     box-shadow: 0px 1px 5px gray;
@@ -108,7 +141,8 @@ svg path{
     --size: 30px; /* height of the wave */
     --p: 50px; /* curvature of the wave */
     --R: 58.3px; /*sqrt(var(--size)*var(--size) + var(--p)*var(--p))*/
-    
+    --wave_color: 255, 255, 255;
+
     position: absolute;
 
     height: 200%;
@@ -116,7 +150,7 @@ svg path{
 
     z-index: -1;
     background: #ffffff;
-    background: linear-gradient(0deg,rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(0deg,rgba(var(--wave_color), 1) 50%, rgba(var(--wave_color), 0) 100%);
 
     --mask:
         radial-gradient(var(--R) at 50% calc(var(--size) + var(--p)),#000 99%,#0000 101%) calc(50% - 2*var(--size)) 0/calc(4*var(--size)) 100%,
@@ -211,32 +245,6 @@ div#page_header_buttons_wrapper div{
     justify-content: center;
     align-content: center;
 }
-div#page_header_buttons_wrapper div a{
-    position: relative;
-    display: inline-block;
-
-    --height: 50px;/* height of the button */
-    height: var(--height);
-    line-height: var(--height);
-    z-index: 1;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin: 10px;
-    border-radius: 100px;
-
-    text-transform: uppercase;
-    font-family: Cafe_Bold;
-    font-weight: bold; /* even bolder */
-    border: none;
-    color: white;
-    background: var(--main_color);
-    
-    font-size: 14px;
-}
-div#page_header_buttons_wrapper div a:hover{
-    background: var(--main_color_dark);
-    transition: 300ms;
-}
 
 div#waves{
     position: relative;
@@ -250,16 +258,44 @@ div#base_content{
     display: flex;
     flex-direction: column;
     
-    max-width: 1300px;
-    top: -20px;
+    top: calc(-1 * var(--main_content_offset));
     z-index: 0;
-
-    margin-left: auto;
-    margin-right: auto;
+    
+    align-items: center;
 }
 div#base_content > div{
+    position: relative;
+    max-width: 1300px;
+    --padding_top_bot: 20px;
+    padding-top: var(--padding_top_bot);
+    padding-bottom: calc(20px + var(--padding_top_bot));
     flex: 1;
-    margin-bottom: 40px;
+}
+div#base_content > div:last-child{
+    padding-bottom: 0;
+}
+div#base_content > div:nth-child(even)::before{
+    position: absolute;
+    height: 100%;
+    width: 100vw;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -2;
+    content: "";
+    background-color: rgb(var(--darker_white_rgb));
+}
+div#base_content footer{
+    /* waves between paragraphs */
+    position: absolute;
+    height: 41px;
+    width: 100vw;
+    z-index: -1;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    --wave_color: var(--darker_white_rgb);
 }
 div#base_content div h1{
     /* paragraph group title */
@@ -269,7 +305,7 @@ div#base_content div h1{
     margin-top: 28px;
 
     font-weight: bold;
-    font-size: 25px;
+    font-size: 38px;
     color: var(--paragraph_group_title);
 }
 div#base_content div h1::after{
@@ -298,14 +334,14 @@ div#paragraphs_wrapper > div{
     display: flex;
     flex-direction: column;
     flex: 1;
-    min-width: 290px;
-    max-width: 580px;
-    margin: 10px;
+    min-width: 250px;
+    max-width: 500px;
+    margin: 15px;
     
-    border-radius: 5px;
-    padding: 15px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
-
+    font-size: 18px;
+}
+div#paragraphs_wrapper > div:last-child{
+    max-width: 1500px;
 }
 div#paragraphs_wrapper div div{
     flex: 1;
@@ -342,6 +378,42 @@ div#paragraphs_wrapper div table tr:nth-child(2n){
     background-color: var(--table_background);
 }
 
+/* ========================= SECTION CALL TO ACTION ========================= */
+div#call_to_action{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+div#call_to_action > div{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    
+    margin: 15px;
+    height: 100%;
+}
+div#call_to_action > div:last-child{
+    flex: 1;
+}
+div#call_to_action > div > div{
+    text-align: center;
+    text-wrap: balance;
+    font-size: 30px;
+    font-weight: 500;
+    margin: 5px;
+}
+div#call_to_action > div > img{
+    position: relative;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+
+    border-radius: 15px;
+}
 
 @media screen and (min-width: 900px){
     /* if the screen is bigger than 900px (on a computer) */
@@ -409,14 +481,7 @@ div#paragraphs_wrapper div table tr:nth-child(2n){
         margin-right: 0;
     }
     /* ========================= PAGE BASE CONTENT COMPUTER ========================= */
-    div#base_content{
-        width: 95%;
-    }
-    div#base_content > div{
-        border-radius: 20px;
 
-        box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
-    }
 }
 @media not screen and (min-width: 900px){
     /* if the screen is smaller than 900px (on a phone) */
@@ -505,11 +570,25 @@ div#paragraphs_wrapper div table tr:nth-child(2n){
     }
 
     /* ========================= PAGE BASE CONTENT PHONE ========================= */
-    div#base_content{
-        width: 100%;
+
+    /* ========================= SECTION CALL TO ACTION PHONE ========================= */
+    div#call_to_action > div:last-child{
+        flex: 0;
     }
-    div#base_content > div{
-        box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.125);
+    div#call_to_action > div > div{
+        color: rgb(var(--white_rgb));
+    }
+    div#call_to_action > div > img{
+        position: absolute;
+        width: 100%;
+        height: 110%;
+        top: -15px;
+        left: 0;
+        z-index: -1;
+        
+        filter: brightness(50%);
+        
+        border-radius: 0px;
     }
 }
 

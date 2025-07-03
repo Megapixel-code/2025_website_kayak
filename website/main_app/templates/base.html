@@ -85,7 +85,7 @@
                     <div>
                     {% if page_buttons %}
                         {% for b in page_buttons %}
-                            <a href="{{ b.href }}">{{ b.name }}</a>
+                            <a href="{{ b.href }}", class="button_big">{{ b.name }}</a>
                         {% endfor %}
                     {% endif %}
                     </div>
@@ -101,6 +101,23 @@
     </div>
     <div id="base_content">
         {% block base_content %}{% endblock %}
+        
+        {% if request.path != '/infos-pratiques/' %}
+            <div id="call_to_action">
+                <div>
+                    <div>
+                        Du bon temps sur l'eau, des nouvelles competences, integrer une comunautée inclusive et acceuilante
+                    </div>
+                    <div>
+                        <a href="../../../../infos-pratiques/", class="button_big">venez nous rejoindre !</a>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://cksartrouville.rd-h.fr/wp-content/uploads/2021/12/P7080142-scaled.jpg" class="wave">
+                </div>
+                <footer></footer> <!-- important to display the waves (look js) -->
+            </div>
+        {% endif %}
     </div>
 </body>
 </html>
