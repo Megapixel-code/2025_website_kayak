@@ -27,7 +27,7 @@
                 </svg>
             </div>
         </div>
-        <div id="header_path_container", class="burger_menu_before_first_open">
+        <nav aria-label="menu" id="header_path_container", class="burger_menu_before_first_open">
             <div id="burger_cross" onclick="closeBurgerMenu()">
                 <svg width="24" height="24" viewBox="0 0 24 24">
                     <path d="m20.058 3.057.884.884-8.058 8.058 8.058 8.058-.884.883L12 12.883l-8.058 8.058-.884-.884 8.058-8.058-8.058-8.058.884-.884L12 11.115z"></path>
@@ -47,29 +47,29 @@
                     Connexion / Inscription
                 </a></li>
                 {% endif %}
-                <li><a href="../../../../" {% if request.path == '/' %} id="keep_hover" {% endif %}>
+                <li><a href="../../../../" {% if request.path == '/' %} id="keep_hover" aria-current="page"{% endif %}>
                     LE CLUB
                 </a></li>
-                <li><a href="../../../../nos-activites/" {% if request.path == '/nos-activites/' %} id="keep_hover" {% endif %}>
+                <li><a href="../../../../nos-activites/" {% if request.path == '/nos-activites/' %} id="keep_hover" aria-current="page"{% endif %}>
                     NOS ACTIVITÉS
                 </a></li>
-                <li><a href="../../../../infos-pratiques/" {% if request.path == '/infos-pratiques/' %} id="keep_hover" {% endif %}>
+                <li><a href="../../../../infos-pratiques/" {% if request.path == '/infos-pratiques/' %} id="keep_hover" aria-current="page"{% endif %}>
                     INFOS PRATIQUES
                 </a></li>
-                <li><a href="../../../../sorties/" {% if request.path == '/sorties/' %} id="keep_hover" {% endif %}>
+                <li><a href="../../../../sorties/" {% if request.path == '/sorties/' %} id="keep_hover" aria-current="page"{% endif %}>
                     SORTIES
                 </a></li>
-                <li><a href="../../../../evpt/" {% if request.path == '/evpt/' %} id="keep_hover" {% endif %}>
+                <li><a href="../../../../evpt/" {% if request.path == '/evpt/' %} id="keep_hover" aria-current="page"{% endif %}>
                     EAUX VIVES POUR TOUS
                 </a></li>
-                <li><a href="../../../../calendrier/" {% if request.path == '/calendrier/' %} id="keep_hover" {% endif %}>
+                <li><a href="../../../../calendrier/" {% if request.path == '/calendrier/' %} id="keep_hover" aria-current="page"{% endif %}>
                     CALENDRIER
                 </a></li>
-                <li><a href="../../../../medias/" {% if request.path == '/medias/' %} id="keep_hover" {% endif %}>
+                <li><a href="../../../../medias/" {% if request.path == '/medias/' %} id="keep_hover" aria-current="page"{% endif %}>
                     MÉDIAS
                 </a></li>
             </ul>
-        </div>
+        </nav>
         <div id="burger_menu_dark_background" onclick="closeBurgerMenu()" style="display: none;"></div>
     </header>
     <div id="page_header_main">
@@ -113,7 +113,7 @@
                     </div>
                 </div>
                 <div>
-                    <img src="https://cksartrouville.rd-h.fr/wp-content/uploads/2021/12/P7080142-scaled.jpg" class="wave">
+                    <img src="https://cksartrouville.rd-h.fr/wp-content/uploads/2021/12/P7080142-scaled.jpg">
                 </div>
                 <footer></footer> <!-- important to display the waves (look js) -->
             </div>
