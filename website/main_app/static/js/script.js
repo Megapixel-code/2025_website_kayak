@@ -8,6 +8,8 @@ var id_burger_menu_dark_background
 // tag elements
 var tag_body;
 // program variables
+var previous_scroll_pos; // used for phone scrolling showing/hiding header
+var current_scroll_pos;
 var b_is_computer; // boolean true if we are a computer false otherwise
 var rng; // rng object
 let resize_timeout; // for the resizeThrottler function
@@ -62,8 +64,9 @@ function loadFunction(){
     id_page_header = document.getElementById("page_header");
     id_burger_menu_dark_background = document.getElementById("burger_menu_dark_background");
     
-    
     tag_body = document.getElementsByTagName("body")[0];
+
+    previous_scroll_pos = window.pageYOffset;
 
     // init rng with unique seed based on the height and width of the window
     var rng_height = new RNG(window.innerHeight);
@@ -109,8 +112,8 @@ function resizeFunction(){
         b_is_computer = true;
 
         // activates the scroll function for the header
-        window.onscroll = function() {scrollFunction()};
-        scrollFunction();
+        window.onscroll = function() {scrollFunctionComputer()};
+        scrollFunctionComputer();
         
         // show the page links in the header
         openBurgerMenu();
@@ -132,11 +135,12 @@ function resizeFunction(){
             return;
         }
         b_is_computer = false;
-        // deactivate the scroll function
-        window.onscroll = function() {};
+        // change the scroll function to phone
+        window.onscroll = function() {scrollFunctionPhone()};
+        scrollFunctionPhone();
 
-        // removes atributes that have been touched by scrollFunction
-        id_site_header.className = "";
+        // changes class to phone class
+        id_site_header.className = "header_showing_phone";
 
         closeBurgerMenu();
 
@@ -145,7 +149,7 @@ function resizeFunction(){
 }
 
 
-function scrollFunction(){
+function scrollFunctionComputer(){
     /* this function is only called when we are a computer */
     if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5){
         // if we scroll
@@ -154,6 +158,20 @@ function scrollFunction(){
     else {
         // if we are at the top of the page
         id_site_header.className = "header_not_scrolled_computer";
+    }
+}
+
+
+function scrollFunctionPhone(){
+    current_scroll_pos = window.pageYOffset;
+
+    if ((current_scroll_pos - previous_scroll_pos) < 0){ // we are scrolling up
+        id_site_header.className = "header_showing_phone";
+        previous_scroll_pos = current_scroll_pos;
+    }
+    else if ((current_scroll_pos - previous_scroll_pos) > 81){ // we scrolled down more than the header
+        id_site_header.className = "";
+        previous_scroll_pos = current_scroll_pos;
     }
 }
 

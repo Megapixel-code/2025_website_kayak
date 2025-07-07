@@ -491,8 +491,16 @@ div#call_to_action > div > img{
     /* if the screen is smaller than 900px (on a phone) */
     /* ========================= SITE MENU HEADER PHONE ========================= */
     header#site_header{
-        position: absolute;
+        position: fixed;
+        top: -81px;
+        
         background-color: white;
+        box-shadow: 0px 1px 5px gray;
+
+        transition: all 0.2s ease-in-out;
+    }
+    header#site_header.header_showing_phone{
+        top: 0;
     }
 
     div#website_name{
@@ -577,6 +585,7 @@ div#call_to_action > div > img{
 
     /* ========================= SECTION CALL TO ACTION PHONE ========================= */
     div#call_to_action{
+        height: 200%;
         display: block;
     }
     div#call_to_action > div:nth-child(0){
@@ -601,9 +610,9 @@ div#call_to_action > div > img{
 
 
 @media not screen and (min-height: 650px){
-    /* if the screen has height smaller than 700px */
+    /* if the screen has height smaller than 650px */
     div#page_header div h1{
-        display: none;
+        font-size: 50px;
     }
     div#page_header div h2{
         display: none;
