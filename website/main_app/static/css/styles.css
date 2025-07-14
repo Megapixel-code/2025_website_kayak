@@ -14,7 +14,7 @@
     --main_color: rgb(3, 169, 244);
     --main_color_dark: rgb(2, 110, 159);
     --paragraph_group_title: rgb(50, 50, 50);
-    --paragraph_title: rgb(100, 100, 100);
+    --paragraph_title: rgb(90, 90, 90);
     --paragraph_content: rgb(120, 120, 120);
     --table_background: rgb(240, 240, 240);
 
@@ -265,6 +265,7 @@ div#base_content{
 }
 div#base_content > div{
     position: relative;
+    width: 100%;
     max-width: 1300px;
     --padding_top_bot: 20px;
     padding-top: var(--padding_top_bot);
@@ -378,9 +379,45 @@ div#paragraphs_wrapper div table tr:nth-child(2n){
     background-color: var(--table_background);
 }
 
+/* ========================= SECTION PEOPLE ========================= */
+div#person_cards_wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    margin-top: 52px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+div#person_cards_wrapper > div{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 220px;
+    padding: 14px;
+}
+div#person_cards_wrapper > div > div{
+    text-align: center;
+}
+div#person_cards_wrapper > div > div > img{
+    object-fit: cover;
+    border-radius: 100%;
+    width: 150px;
+    height: 150px;
+}
+div#person_cards_wrapper > div > div > h2{
+    color: var(--paragraph_group_title);
+}
+div#person_cards_wrapper > div > div > h3{
+    color: var(--paragraph_content);
+    font-size: 14px;
+}
+
 /* ========================= SECTION CALL TO ACTION ========================= */
 div#call_to_action{
-    position: relative;   
+    position: relative;
 }
 div#call_to_action > div{
     display: flex;
@@ -469,9 +506,13 @@ div#call_to_action > div > img{
         margin-left: 0;
         margin-right: 0;
     }
-    /* ========================= PAGE BASE CONTENT COMPUTER ========================= */
+    /* ========================= SECTION CALL TO ACTION COMPUTER ========================= */
     div#call_to_action{
         display: flex;
+        margin-left: 15px;
+        margin-right: 15px;
+        width: calc(100% - 30px) !important;
+        max-width: calc(1300px - 30px) !important;
         flex-direction: row;
         align-items: center;
     }
